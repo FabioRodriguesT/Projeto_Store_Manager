@@ -10,7 +10,7 @@ const {
 } = require('../mocks/products.mock');
 
 describe('Realizando teste - PRODUCTS SERVICES', function () {
-  it('Testando a função de listar todos os produtos', async function () {
+  it('Testando a função de listar todos os produtos com sucesso.', async function () {
     sinon.stub(productsModel, 'findAll').resolves(productsFromDB);
 
     const products = await productsService.findAll();
@@ -19,7 +19,7 @@ describe('Realizando teste - PRODUCTS SERVICES', function () {
     expect(products.data).to.be.deep.equal(productsFromModel);
   });
 
-  it('Testando a função de lista um único produto com o id específico, quando o id está cadastrado', async function () {
+  it('Testando a função de listar um único produto com o id específico, existente no banco de dados.', async function () {
     sinon.stub(productsModel, 'findById').resolves(productFromDB);
 
     const input = '1';
@@ -29,7 +29,7 @@ describe('Realizando teste - PRODUCTS SERVICES', function () {
     expect(product.data).to.be.deep.equal(productFromModel);
   });
 
-  it('Testando a função de lista um único produto com o id específico, quando o id é inexistente', async function () {
+  it('Testando a função de listar um único produto com o id específico, de um id inexistente no banco de dados.', async function () {
     sinon.stub(productsModel, 'findById').resolves([]);
 
     const input = '4';

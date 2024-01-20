@@ -1,9 +1,10 @@
 const express = require('express');
 // const { productsService } = require('./services');
-const { productsRoute } = require('./routes');
+const { productsRoute, salesRoute } = require('./routes');
 
 const app = express();
 app.use(productsRoute);
+app.use(salesRoute);
 app.use(express.json());
 
 // não remova esse endpoint, é para o avaliador funcionar
@@ -12,7 +13,10 @@ app.get('/', (_request, response) => {
 });
 
 app.use('/products', productsRoute);
+app.use('/sales', salesRoute);
 
+// app.get('/sales', async (req, res) => res.status(200).json({ message: 'Bom dia' }));
+  
 // app.get('/products', async (req, res) => {
 //   const serviceResponse = await productsService.findAll();
 //   if (serviceResponse.status !== 'SUCCESSFUL') {

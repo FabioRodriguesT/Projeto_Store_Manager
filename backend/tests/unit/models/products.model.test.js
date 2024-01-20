@@ -10,7 +10,7 @@ const {
 } = require('../mocks/products.mock');
 
 describe('Realizando teste - PRODUCTS MODEL', function () {
-  it('Recuperando a lista de todos os produtos com sucessos', async function () {
+  it('Recuperando a lista de todos os produtos com sucesso.', async function () {
     sinon.stub(connection, 'execute').resolves([productsFromDB]);
 
     const products = await productsModel.findAll();
@@ -19,7 +19,7 @@ describe('Realizando teste - PRODUCTS MODEL', function () {
     expect(products).to.be.deep.equal(productsFromModel);
   });
 
-  it('Realizando teste de lista um único produto com sucesso', async function () {
+  it('Realizando teste de lista um único produto com sucesso, existente no banco de dados.', async function () {
     sinon.stub(connection, 'execute').resolves([[productFromDB]]);
     // input tem quer ser em formato de string(req.params.id)
     const input = '1';

@@ -18,7 +18,7 @@ const {
 } = require('../mocks/products.mock');
 
 describe('Realizando testes - PRODUCTS CONTROLLER', function () {
-  it('Recuperando a lista de todos os produtos com sucesso', async function () {
+  it('Recuperando a lista de todos os produtos com sucesso.', async function () {
     // realizar o teste
     sinon.stub(productsService, 'findAll').resolves(findProductSuccessful);
     const req = {};   
@@ -34,7 +34,7 @@ describe('Realizando testes - PRODUCTS CONTROLLER', function () {
     expect(res.json).to.have.been.calledWith(productsFromModel); 
   });
 
-  it('Recuperando a lista de um único produto com o id especifico, existente no banco de dados', async function () {
+  it('Recuperando a lista de um único produto com o id especifico, existente no banco de dados.', async function () {
     sinon.stub(productsService, 'findById').resolves(findProductSuccessfulByIdOne);
 
     const req = { 
@@ -55,7 +55,7 @@ describe('Realizando testes - PRODUCTS CONTROLLER', function () {
     expect(res.json).to.have.been.deep.calledWith(productFromModel);
   });
 
-  it('Recuperando a lista de um único produto com o id especifico, de um id inexistente no banco de dadots', async function () {
+  it('Recuperando a lista de um único produto com o id especifico, de um id inexistente no banco de dados.', async function () {
     sinon.stub(productsService, 'findById').resolves(findProductUnsuccessfullyById);
     
     const req = { 
