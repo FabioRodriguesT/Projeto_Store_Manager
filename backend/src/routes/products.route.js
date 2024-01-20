@@ -6,5 +6,6 @@ route.use(express.json());
 
 route.get('/products', productsController.getAllProducts);
 route.get('/products/:id', productsController.getProductsById);
+route.post('/products', productsController.createANewProduct);
 
 module.exports = route;

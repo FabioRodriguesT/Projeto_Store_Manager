@@ -15,6 +15,8 @@ const {
   findProductSuccessful,
   findProductSuccessfulByIdOne, 
   findProductUnsuccessfullyById,
+  newProductFromDB,
+  newProductFromModel,
 } = require('../mocks/products.mock');
 
 describe('Realizando testes - PRODUCTS CONTROLLER', function () {
@@ -73,6 +75,28 @@ describe('Realizando testes - PRODUCTS CONTROLLER', function () {
    
     expect(res.status).to.have.been.calledWith(404);
     expect(res.json).to.have.been.deep.calledWith({ message: 'Product not found' });
+  });
+
+  it('Recuperando o resultado da função de cadastrar um novo produto.', async function () {
+    sinon.stub(productsService, 'insertAProduct').resolves(
+      { status: 'CREATED', data: newProductFromDB },
+    );
+
+    const req = {
+      body: {
+        name: 'ProdutoX',
+      },
+    };
+
+    const res = {
+      status: sinon.stub().returnsThis(),
+      json: sinon.stub(),
+    };
+
+    await productsController.createANewProduct(req, res);
+
+    expect(res.status).to.have.been.calledWith(201);
+    expect(res.json).to.have.been.deep.calledWith(newProductFromModel);
   });
 
   afterEach(function () {

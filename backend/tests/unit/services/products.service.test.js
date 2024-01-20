@@ -7,6 +7,9 @@ const {
   productFromModel,
   productsFromDB,
   productsFromModel,
+  productIdFromModel,
+  newProductFromDB,
+  newProductFromModel,
 } = require('../mocks/products.mock');
 
 describe('Realizando teste - PRODUCTS SERVICES', function () {
@@ -38,6 +41,18 @@ describe('Realizando teste - PRODUCTS SERVICES', function () {
     expect(product.data).to.be.deep.equal(
       { message: 'Product not found' },
     );
+  });
+
+  it('Testando a funçao de cadastrar um novo produto com sucesso.', async function () {
+    sinon.stub(productsModel, 'insertAProduct').resolves(productIdFromModel);
+    sinon.stub(productsModel, 'findById').resolves(newProductFromDB);
+
+    const input = 'ProdutoX';   
+
+    const responsiveNewProductService = await productsService.insertAProduct(input);
+
+    expect(responsiveNewProductService.status).to.equal('CREATED');
+    expect(responsiveNewProductService.data).to.deep.equal(newProductFromModel);
   });
 
   afterEach(function () {

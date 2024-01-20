@@ -1,3 +1,18 @@
+const productIdFromDB = {
+  insertId: 75,  
+};
+const productIdFromModel = 75;
+
+const newProductFromDB = {
+  id: 75,
+  name: 'ProdutoX',
+};
+
+const newProductFromModel = {
+  id: 75,
+  name: 'ProdutoX',
+};
+
 const productsFromDB = [
   {
     id: 1,
@@ -61,4 +76,8 @@ module.exports = {
   findProductSuccessful,
   findProductSuccessfulByIdOne,
   findProductUnsuccessfullyById,
+  productIdFromDB,
+  productIdFromModel,
+  newProductFromDB,
+  newProductFromModel,
 };
