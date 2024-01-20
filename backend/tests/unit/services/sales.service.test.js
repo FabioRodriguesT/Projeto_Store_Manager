@@ -5,9 +5,7 @@ const { salesService } = require('../../../src/services');
 
 const {
   salesFromDB,
-  salesFromModel,
-  salesIdFromDB,
-  salesIdFromModel,
+  salesFromModel,  
 } = require('../mocks/sales.mock');
 
 describe('Realizando teste - SALES SERVICES', function () {
