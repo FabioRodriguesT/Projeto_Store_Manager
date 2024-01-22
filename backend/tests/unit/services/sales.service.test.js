@@ -1,6 +1,6 @@
 const { expect } = require('chai');
 const sinon = require('sinon');
-const { salesModel } = require('../../../src/models');
+const { salesModel, productsModel } = require('../../../src/models');
 const { salesService } = require('../../../src/services');
 
 const {
@@ -8,7 +8,8 @@ const {
   salesFromModel,
   newSaleArrayFromDB,
   newSaleIdFromModel,
-  newSaleArrayFromModel, 
+  newSaleArrayFromModel,
+  newSaleIdFromDB,
 } = require('../mocks/sales.mock');
 
 describe('Realizando teste - SALES SERVICES', function () {
@@ -46,6 +47,7 @@ describe('Realizando teste - SALES SERVICES', function () {
   it('Testando a função de cadastrar uma nova venda com sucesso.', async function () {
     sinon.stub(salesModel, 'insertASale').resolves(newSaleIdFromModel);
     sinon.stub(salesModel, 'findSalesArray').resolves(newSaleArrayFromDB);
+    sinon.stub(productsModel, 'findById').resolves(newSaleIdFromDB);
 
     const sale = [
       {

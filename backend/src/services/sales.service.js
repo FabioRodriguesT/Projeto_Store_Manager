@@ -1,4 +1,5 @@
 const { salesModel } = require('../models');
+const { validationSale } = require('./validation');
 
 const findAll = async () => {
   const sales = await salesModel.findAll();
@@ -16,6 +17,16 @@ const findById = async (saleId) => {
 };
 
 const insertASale = async (sale) => {
+  const errors = await validationSale.isValidSale(sale);
+  let indexError = 0;
+  if (errors.some((error, index) => {
+    indexError = index;
+    return error !== undefined;
+  })) {
+    return { status: errors[indexError].status, data: { message: errors[indexError].message },
+    };
+  }
+
   const saleId = await salesModel.insertASale(sale);
 
   const salesArray = await salesModel.findSalesArray(saleId);
