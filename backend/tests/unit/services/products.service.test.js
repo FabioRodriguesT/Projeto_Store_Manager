@@ -2,6 +2,7 @@ const { expect } = require('chai');
 const sinon = require('sinon');
 const { productsModel } = require('../../../src/models');
 const { productsService } = require('../../../src/services');
+const validationName = require('../../../src/services/validation/validationName');
 const {
   productFromDB,
   productFromModel,
@@ -53,7 +54,7 @@ describe('Realizando teste - PRODUCTS SERVICES', function () {
 
     expect(responsiveNewProductService.status).to.equal('CREATED');
     expect(responsiveNewProductService.data).to.deep.equal(newProductFromModel);
-  });
+  });  
 
   afterEach(function () {
     sinon.restore();

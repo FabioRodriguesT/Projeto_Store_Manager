@@ -5,6 +5,8 @@ const chaihttp = require('chai-http');
 const { productsService } = require('../../../src/services');
 const { productsController } = require('../../../src/controllers');
 
+const validationName = require('../../../src/services/validation/validationName');
+
 const { expect } = chai;
 chai.use(sinonChai);
 chai.use(chaihttp);
@@ -97,6 +99,25 @@ describe('Realizando testes - PRODUCTS CONTROLLER', function () {
 
     expect(res.status).to.have.been.calledWith(201);
     expect(res.json).to.have.been.deep.calledWith(newProductFromModel);
+  });
+
+  it('Testando a função de cadastrar um novo produto, cadastrando um objeto sem a chave name', async function () {
+    sinon.stub(productsService, 'insertAProduct').resolves(
+      { status: 'BAD_REQUEST', data: { message: '"name" is required' } },
+    );
+    const next = sinon.stub().returns();
+    const req = {
+      body: {},
+    };
+
+    const res = {
+      status: sinon.stub().returnsThis(),
+      json: sinon.stub(),
+    };
+
+    const response = await productsController.createANewProduct(req, res, next);
+
+    console.log('RESPONSE', response);
   });
 
   afterEach(function () {
