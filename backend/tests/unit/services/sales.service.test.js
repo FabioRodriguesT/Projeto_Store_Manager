@@ -11,6 +11,7 @@ const {
   newSaleArrayFromModel,
   newSaleIdFromDB,
 } = require('../mocks/sales.mock');
+const { validationSale } = require('../../../src/services/validation');
 
 describe('Realizando teste - SALES SERVICES', function () {
   it('Testando a função de listar todas as vendas com sucesso.', async function () {
@@ -71,7 +72,70 @@ describe('Realizando teste - SALES SERVICES', function () {
     expect(reponseNewSaleService.data).to.deep.equal(responseMock);
   });
 
+  it('Testando a função de cadastrar quando o product Id, não é passado no corpo da requisição.', async function () {
+    const productId = undefined;
+
+    const response = await validationSale.isValidProductId(productId); 
+
+    expect(response.status).to.equal('BAD_REQUEST');
+    expect(response.message).to.deep.equal('"productId" is required');
+  });
+
+  it('Testando a função de cadastrar quando o productId, é de um produto não cadastrado, ou não existe no banco de dados.', async function () {
+    sinon.stub(productsModel, 'findById').resolves();
+    const sale = [{
+      productId: 4,
+      quantity: 3,
+    }];
+
+    const response = await validationSale.isValidSale(sale);    
+    
+    expect(response[0].status).to.equal('NOT_FOUND');
+    expect(response[0].message).to.deep.equal('Product not found');
+  });
+
+  it('Testando a função de cadastrar quando o quantity, não é passado no corpo da requisição.', async function () {
+    const quantity = undefined;
+
+    const response = await validationSale.isValidQuantity(quantity);    
+    
+    expect(response.status).to.equal('BAD_REQUEST');
+    expect(response.message).to.deep.equal('"quantity" is required');
+  }); 
+
+  it('Testando a função de cadastrar quando o quantity, é de valor menor que 0', async function () {
+    const quantity = -2;
+
+    const response = await validationSale.isValidQuantity(quantity);    
+    expect(response.status).to.equal('INVALID_VALUE');
+    expect(response.message).to.deep.equal('"quantity" must be greater than or equal to 1');
+  }); 
+
+  it('Testando o erro de cadastrar uma venda, com vários produtos.', async function () {
+    sinon.stub(productsModel, 'findById')
+      .onFirstCall()
+      .resolves({
+        id: 1,
+        name: 'Martelo de Thor',
+      })
+      .onSecondCall()
+      .resolves();
+
+    const sale = [{
+      productId: 1,
+      quantity: 2,
+    }, {
+      productId: 4,
+      quantity: 3,
+    }];
+
+    const response = await salesService.insertASale(sale);
+
+    expect(response.status).to.equal('NOT_FOUND');
+    expect(response.data.message).to.deep.equal('Product not found');
+  });
+
   afterEach(function () {
     sinon.restore();
-  });
+  }); 
 });

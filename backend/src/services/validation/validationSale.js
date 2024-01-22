@@ -10,7 +10,7 @@ const isValidProductId = async (productId) => {
 
   const findProduct = await productsModel.findById(productId);
 
-  if (!findProduct || findProduct === 0) {
+  if (findProduct === undefined) {
     return {
       status: 'NOT_FOUND',
       message: 'Product not found', 
@@ -55,4 +55,6 @@ const isValidSale = async (sale) => {
 
 module.exports = {
   isValidSale,
+  isValidProductId,
+  isValidQuantity,
 };

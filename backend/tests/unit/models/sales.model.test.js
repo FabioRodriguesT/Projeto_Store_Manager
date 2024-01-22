@@ -55,6 +55,41 @@ describe('Realizando teste - SALES MODEL', function () {
     expect(newSale).to.equal(newSaleIdFromModel);
   });
 
+  it('Realizando a busca do array de produtos de uma venda específica.', async function () {
+    sinon.stub(connection, 'execute').resolves([[
+      {
+        productId: 1,
+        quantity: 5,
+      },
+      {
+        productId: 2,
+        quantity: 10,
+      },
+    ]]);
+    
+    const saledId = 1;
+    
+    const response = await salesModel.findSalesArray(saledId);
+     
+    expect(response).to.have.length(2);
+  });
+
+  it('Realizando a criação de vendas em um determinada venda.', async function () {
+    sinon.stub(connection, 'execute')
+      .onFirstCall()
+      .resolves([newSaleIdFromDB])
+      .onSecondCall()
+      .resolves(null);
+
+    const sales = [];
+
+    const response = await salesModel.insertASale(sales);
+
+    console.log('RESPONSE', response);
+
+    expect(response).to.be.a('number');    
+  });
+
   afterEach(function () {
     sinon.restore();
   });

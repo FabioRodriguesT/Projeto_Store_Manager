@@ -11,6 +11,7 @@ const {
   newProductFromDB,
   newProductFromModel,
 } = require('../mocks/products.mock');
+const { validationProduct } = require('../../../src/services/validation');
 
 describe('Realizando teste - PRODUCTS SERVICES', function () {
   it('Testando a função de listar todos os produtos com sucesso.', async function () {
@@ -53,7 +54,24 @@ describe('Realizando teste - PRODUCTS SERVICES', function () {
 
     expect(responsiveNewProductService.status).to.equal('CREATED');
     expect(responsiveNewProductService.data).to.deep.equal(newProductFromModel);
-  });  
+  });
+
+  it('Testando a validação de nome, sem ter um nome.', async function () {
+    const name = undefined;
+    const response = validationProduct.isValidName(name);
+
+    expect(response.status).to.equal('BAD_REQUEST');
+    expect(response.message).to.deep.equal('"name" is required');
+  });
+
+  it('Testando a validação de nome, com um nome menor que 5 caracteres', async function () {
+    const name = 'pera';
+
+    const response = await productsService.insertAProduct(name);   
+
+    expect(response.status).to.equal('INVALID_VALUE');
+    expect(response.data.message).to.deep.equal('"name" length must be at least 5 characters long');
+  });
 
   afterEach(function () {
     sinon.restore();

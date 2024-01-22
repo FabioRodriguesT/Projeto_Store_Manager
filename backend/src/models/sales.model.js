@@ -58,4 +58,5 @@ module.exports = {
   findById,
   insertASale,
   findSalesArray,
+  saveSales,
 };
