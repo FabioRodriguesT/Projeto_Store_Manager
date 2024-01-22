@@ -12,4 +12,6 @@ route.get(
   salesController.getSalesById,
 );
 
+route.post('/sales', salesController.createANewSale);
+
 module.exports = route;

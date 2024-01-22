@@ -7,6 +7,8 @@ const {
   salesFromModel,
   salesIdFromDB,
   salesIdFromModel,
+  newSaleIdFromDB,
+  newSaleIdFromModel,
 } = require('../mocks/sales.mock');
 
 describe('Realizando teste - SALES MODEL', function () {
@@ -27,6 +29,30 @@ describe('Realizando teste - SALES MODEL', function () {
 
     expect(sale).to.be.an('array');
     expect(sale).to.be.deep.equal(salesIdFromModel);
+  });
+
+  it('Realizando teste de cadastrar uma nova venda com sucesso.', async function () {
+    sinon.stub(connection, 'execute')
+      .onFirstCall()
+      .resolves([newSaleIdFromDB])
+      .onSecondCall()
+      .resolves(null);
+
+    const sales = [
+      {
+        productId: 1,
+        quantity: 1,
+      },
+      {
+        productId: 2,
+        quantity: 5,
+      },
+    ];
+
+    const newSale = await salesModel.insertASale(sales);
+
+    expect(newSale).to.be.a('number');
+    expect(newSale).to.equal(newSaleIdFromModel);
   });
 
   afterEach(function () {

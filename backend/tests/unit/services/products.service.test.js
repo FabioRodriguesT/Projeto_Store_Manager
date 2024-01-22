@@ -2,7 +2,6 @@ const { expect } = require('chai');
 const sinon = require('sinon');
 const { productsModel } = require('../../../src/models');
 const { productsService } = require('../../../src/services');
-const validationName = require('../../../src/services/validation/validationName');
 const {
   productFromDB,
   productFromModel,

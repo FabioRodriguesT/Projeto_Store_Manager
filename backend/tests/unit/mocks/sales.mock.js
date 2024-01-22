@@ -83,6 +83,62 @@ const findSalesUnsuccessfullyById = {
   data: { message: 'Sale not found' },
 };
 
+const newSaleFromDB = {
+  id: 75,
+  itemSold: [
+    {
+      productId: 1,
+      quantity: 1,
+    },
+    {
+      productId: 2,
+      quantity: 5,
+    },
+  ],
+};
+
+const newSaleFromModel = {
+  id: 75,
+  itemSold: [
+    {
+      productId: 1,
+      quantity: 1,
+    },
+    {
+      productId: 2,
+      quantity: 5,
+    },
+  ],
+};
+
+const newSaleIdFromModel = 75;
+
+const newSaleIdFromDB = {
+  insertId: 75,
+};
+
+const newSaleArrayFromModel = [
+  {    
+    productId: 1,
+    quantity: 5,
+  },
+  {    
+    productId: 2,
+    quantity: 10,
+  },
+];
+
+const newSaleArrayFromDB = [
+  {    
+    productId: 1,
+    quantity: 5,
+  },
+  {    
+    productId: 2,
+    quantity: 10,
+  },
+];
+
 module.exports = {
   salesFromDB,
   salesFromModel,
@@ -91,4 +147,10 @@ module.exports = {
   findSalesSuccessful,
   findSalesSuccessfulById,
   findSalesUnsuccessfullyById,
+  newSaleFromDB,
+  newSaleFromModel,
+  newSaleIdFromDB,
+  newSaleIdFromModel,
+  newSaleArrayFromDB,
+  newSaleArrayFromModel,
 };

@@ -16,6 +16,8 @@ const {
   findSalesSuccessful,
   findSalesSuccessfulById,
   findSalesUnsuccessfullyById,
+  newSaleFromDB,
+  newSaleFromModel,
 } = require('../mocks/sales.mock');
 
 describe('Realizando teste - SALES CONTROLLER', function () {
@@ -72,6 +74,35 @@ describe('Realizando teste - SALES CONTROLLER', function () {
 
     expect(res.status).to.have.been.calledWith(404);
     expect(res.json).to.have.been.deep.calledWith({ message: 'Sale not found' });
+  });
+
+  it('Recuperando a lista de cadrastar de uma nova venda', async function () {
+    sinon.stub(salesService, 'insertASale').resolves(
+      { status: 'CREATED', data: newSaleFromDB },
+    );
+
+    const req = {
+      body: [
+        {
+          productId: 1,
+          quantity: 1,
+        },
+        {
+          productId: 2,
+          quantity: 5,
+        },
+      ],
+    };
+
+    const res = {
+      status: sinon.stub().returnsThis(),
+      json: sinon.stub(),
+    };
+
+    await salesController.createANewSale(req, res);
+
+    expect(res.status).to.have.been.calledWith(201);
+    expect(res.json).to.have.been.deep.calledWith(newSaleFromModel);
   });
    
   afterEach(function () {
