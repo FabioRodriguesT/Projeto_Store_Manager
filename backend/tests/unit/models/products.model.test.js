@@ -71,6 +71,19 @@ describe('Realizando teste - PRODUCTS MODEL', function () {
     sinon.assert.calledWith(productsModel.deleteAProduct);
   });
 
+  it('Realizando teste na função procurar um Produto', async function () {
+    sinon.stub(connection, 'execute').resolves([{
+      id: 1,
+      name: 'Martelo de Thor',
+    }]);
+
+    const searchTerm = 'martelo';
+    
+    const response = await productsModel.searchProducts(searchTerm);
+
+    expect(response).to.be.deep.equal({ id: 1, name: 'Martelo de Thor' });
+  });
+
   afterEach(function () {
     sinon.restore();
   });

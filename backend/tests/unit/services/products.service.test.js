@@ -134,6 +134,21 @@ describe('Realizando teste - PRODUCTS SERVICES', function () {
     expect(response.data).to.deep.equal({ message: 'Product not found' });
   });
 
+  it('Testando a função procurar um produtos, com sucesso.', async function () {
+    sinon.stub(productsModel, 'searchProducts').resolves([{ 
+      id: 1, name: 'Martelo de Thor', 
+    }]);
+    
+    const searchTerm = 'martelo';
+
+    const response = await productsService.searchProducts(searchTerm);
+
+    expect(response.status).to.equal('SUCCESSFUL');
+    expect(response.data).to.deep.equal([{ 
+      id: 1, name: 'Martelo de Thor', 
+    }]);
+  });
+
   afterEach(function () {
     sinon.restore();
   });

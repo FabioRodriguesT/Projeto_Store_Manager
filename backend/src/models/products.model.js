@@ -13,7 +13,7 @@ const findById = async (productId) => {
   const [[product]] = await connection.execute(
     'SELECT * FROM products WHERE id = ?',
     [productId],
-  );
+  );  
 
   return product;
 };
@@ -46,10 +46,19 @@ const deleteAProduct = async (id) => {
   );
 };
 
+const searchProducts = async (searchTerm) => {
+  const [result] = await connection.execute(
+    `SELECT * FROM products WHERE name LIKE '%${searchTerm}%'`, 
+  );
+
+  return result;
+};
+
 module.exports = {
   findAll,
   findById,
   insertAProduct,
   alterAProduct,
   deleteAProduct,
+  searchProducts,
 };
