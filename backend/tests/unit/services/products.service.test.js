@@ -122,16 +122,16 @@ describe('Realizando teste - PRODUCTS SERVICES', function () {
     sinon.stub(productsModel, 'deleteAProduct').resolves();
     sinon.stub(validationProduct, 'isValidProductId').resolves(
       {
-        status: 'BAD_REQUEST',
-        message: '"productId" is required',
+        status: 'NOT_FOUND',
+        message: 'Product not found',
       },
     );
-    const id = 1;
+    const id = 4;
     
     const response = await productsService.deleteAProduct(id);
   
-    expect(response.status).to.equal('BAD_REQUEST');
-    expect(response.data).to.deep.equal({ message: '"productId" is required' });
+    expect(response.status).to.equal('NOT_FOUND');
+    expect(response.data).to.deep.equal({ message: 'Product not found' });
   });
 
   afterEach(function () {

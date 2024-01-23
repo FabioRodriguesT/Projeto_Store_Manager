@@ -39,8 +39,23 @@ const insertASale = async (sale) => {
   return { status: 'CREATED', data: response };
 };
 
+const deleteASale = async (saleId) => {
+  const error = await validationSale.hasASale(saleId);
+  if (error) {
+    return {
+      status: error.status,
+      data: { message: error.message },
+    };
+  }
+
+  await salesModel.deleteASale(saleId);
+
+  return { status: 'NO_CONTENT' };
+};
+
 module.exports = {
   findAll,
   findById,
   insertASale,
+  deleteASale,
 };

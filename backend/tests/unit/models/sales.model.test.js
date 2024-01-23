@@ -88,6 +88,16 @@ describe('Realizando teste - SALES MODEL', function () {
     expect(response).to.be.a('number');    
   });
 
+  it('Realizando teste na função de deletar uma venda com sucesso.', async function () {
+    sinon.stub(connection, 'execute').resolves();
+    sinon.spy(salesModel, 'deleteASale');
+
+    const id = 1;
+    await salesModel.deleteASale(id);
+
+    sinon.assert.calledWith(salesModel.deleteASale);
+  });
+  
   afterEach(function () {
     sinon.restore();
   });

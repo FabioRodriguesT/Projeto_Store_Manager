@@ -135,6 +135,52 @@ describe('Realizando teste - SALES SERVICES', function () {
     expect(response.data.message).to.deep.equal('Product not found');
   });
 
+  it('Testando a função delete de uma venda, com sucesso.', async function () {
+    sinon.stub(salesModel, 'deleteASale').resolves();
+    sinon.stub(validationSale, 'hasASale').resolves();
+
+    const id = 1;
+    
+    const response = await salesService.deleteASale(id);
+  
+    expect(response.status).to.equal('NO_CONTENT');
+  });
+
+  it('Testando a função de validação hasASale de uma venda, com o id inexistente.', async function () {
+    sinon.stub(salesModel, 'deleteASale').resolves();
+    
+    sinon.stub(salesModel, 'findById').resolves(undefined);
+
+    const id = 4;
+    
+    const response = await salesService.deleteASale(id);
+
+    expect(response.status).to.equal('NOT_FOUND');
+    expect(response.data).to.deep.equal({ message: 'Sale not found' });
+  });
+
+  it('Testando a validação hasASale, com um venda existente no banco de dados.', async function () {
+    sinon.stub(salesModel, 'findById').resolves([
+      {
+        date: '2024-01-23T11:07:47.000Z',
+        productId: 1,
+        quantity: 5,
+      },
+      {
+        date: '2024-01-23T11:07:47.000Z',
+        productId: 2,
+        quantity: 10,
+      },
+    ]);
+    sinon.spy(validationSale, 'hasASale');
+
+    const id = 1;
+    
+    await validationSale.hasASale(id);
+
+    sinon.assert.calledWith(validationSale.hasASale);
+  });
+
   afterEach(function () {
     sinon.restore();
   }); 

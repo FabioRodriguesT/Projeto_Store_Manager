@@ -53,10 +53,23 @@ const insertASale = async (sales) => {
   return insertId;
 };
 
+const deleteASale = async (id) => {
+  await connection.execute(
+    'DELETE FROM sales WHERE id = ?',
+    [id],
+  );
+
+  await connection.execute(
+    'DELETE FROM sales_products WHERE sale_id = ?',
+    [id],
+  );
+};
+
 module.exports = {
   findAll,
   findById,
   insertASale,
   findSalesArray,
   saveSales,
+  deleteASale,
 };
