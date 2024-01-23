@@ -108,6 +108,32 @@ describe('Realizando teste - PRODUCTS SERVICES', function () {
     expect(response.data).to.deep.equal({ message: '"name" length must be at least 5 characters long' });
   });
 
+  it('Testando a função delete um produto, com sucesso.', async function () {
+    sinon.stub(productsModel, 'deleteAProduct').resolves();
+    sinon.stub(validationProduct, 'isValidProductId').resolves();
+    const id = 1;
+    
+    const response = await productsService.deleteAProduct(id);
+  
+    expect(response.status).to.equal('NO_CONTENT');
+  });
+
+  it('Testando a função delete um produto, com um id inexistente.', async function () {
+    sinon.stub(productsModel, 'deleteAProduct').resolves();
+    sinon.stub(validationProduct, 'isValidProductId').resolves(
+      {
+        status: 'BAD_REQUEST',
+        message: '"productId" is required',
+      },
+    );
+    const id = 1;
+    
+    const response = await productsService.deleteAProduct(id);
+  
+    expect(response.status).to.equal('BAD_REQUEST');
+    expect(response.data).to.deep.equal({ message: '"productId" is required' });
+  });
+
   afterEach(function () {
     sinon.restore();
   });

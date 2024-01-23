@@ -47,9 +47,19 @@ const alterAProduct = async (name, id) => {
   return { status: 'SUCCESSFUL', data: product };
 };
 
+const deleteAProduct = async (id) => {
+  const error = await validationProduct.isValidProductId(id);
+  if (error) return { status: error.status, data: { message: error.message } };
+
+  await productsModel.deleteAProduct(id);
+
+  return { status: 'NO_CONTENT' };
+};
+
 module.exports = {
   findAll,
   findById,
   insertAProduct,
   alterAProduct,
+  deleteAProduct,
 };

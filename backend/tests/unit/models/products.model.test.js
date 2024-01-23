@@ -1,4 +1,4 @@
-const { expect } = require('chai');
+const { expect, assert } = require('chai');
 const sinon = require('sinon');
 const connection = require('../../../src/models/connection');
 const { productsModel } = require('../../../src/models');
@@ -59,6 +59,16 @@ describe('Realizando teste - PRODUCTS MODEL', function () {
     expect(response).to.be.a('object');
     expect(response.id).to.equal(1);
     expect(response.name).to.equal('Martelo do Batman');   
+  });
+
+  it('Realizando teste na função de deletar um produto.', async function () {
+    sinon.stub(connection, 'execute').resolves();
+    sinon.spy(productsModel, 'deleteAProduct');
+
+    const id = 1;
+    await productsModel.deleteAProduct(id);
+
+    sinon.assert.calledWith(productsModel.deleteAProduct);
   });
 
   afterEach(function () {
