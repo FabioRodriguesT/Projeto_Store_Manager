@@ -126,6 +126,42 @@ describe('Realizando teste - SALES CONTROLLER', function () {
     expect(res.status).to.have.been.calledWith(204);
   });
    
+  it('Testando a função de atualizar a quantidade com sucesso.', async function () {
+    sinon.stub(salesService, 'updateQuantity').resolves({
+      status: 'SUCCESSFUL',
+      data: {
+        date: '2024-01-23T15:32:23.000Z',
+        productId: 2,
+        quantity: 15,
+        saleId: 1,
+      } });
+    
+    const req = {
+      body: {
+        quantity: 15,
+      },
+      params: {
+        saledId: 1,
+        productId: 2,
+      },
+    };
+
+    const res = {
+      status: sinon.stub().returnsThis(),
+      json: sinon.stub(),
+    };
+    
+    await salesController.updateQuantity(req, res);
+
+    expect(res.status).to.have.been.calledWith(200);
+    expect(res.json).to.have.been.deep.calledWith({
+      date: '2024-01-23T15:32:23.000Z',
+      productId: 2,
+      quantity: 15,
+      saleId: 1,
+    });
+  });
+
   afterEach(function () {
     sinon.restore();
   });

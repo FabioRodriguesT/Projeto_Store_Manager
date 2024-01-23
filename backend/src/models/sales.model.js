@@ -65,6 +65,23 @@ const deleteASale = async (id) => {
   );
 };
 
+const updateQuantity = async (saleId, productId, quantity) => {
+  await connection.execute(
+    `UPDATE sales_products SET quantity = ${quantity} 
+    WHERE sale_id = ${saleId} AND product_id = ${productId}`,
+    [saleId, productId, quantity],
+  );
+
+  const [[result]] = await connection.execute(
+    `SELECT date, product_id as productId, quantity, sale_id as saleId 
+    FROM sales_products INNER JOIN sales ON sales_products.sale_id = sales.id 
+    WHERE sale_id = ${saleId} AND product_id = ${productId} ORDER BY product_id ASC`,
+    [saleId, productId, quantity],
+  );
+
+  return result; 
+};
+
 module.exports = {
   findAll,
   findById,
@@ -72,4 +89,5 @@ module.exports = {
   findSalesArray,
   saveSales,
   deleteASale,
+  updateQuantity,
 };

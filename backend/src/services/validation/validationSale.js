@@ -47,8 +47,37 @@ const hasASale = async (id) => {
   } 
 };
 
+const hasProductInASale = async (saleId, findProductId) => {
+  const products = await salesModel.findSalesArray(saleId);
+
+  // A lógica é, se algum element.produtoid for igual o produto id eu não retorno nada
+  // Agora se nenhum for igual eu jogo um erro
+  const hasTheProduct = products.some(
+    ({ productId }) => Number(productId) === Number(findProductId),
+  );
+  
+  if (!hasTheProduct) {
+    return {
+      status: 'NOT_FOUND',
+      message: 'Product not found in sale',
+    };
+  }
+};
+
+const validateUpdate = async (saleId, productId, quantity) => {
+  const errors = [];
+
+  errors.push(await isValidQuantity(quantity));
+  errors.push(await hasASale(saleId));
+  errors.push(await hasProductInASale(saleId, productId));
+
+  return errors;
+};
+
 module.exports = {
   isValidSale,
   isValidQuantity,
   hasASale,
+  validateUpdate,
+  hasProductInASale,
 };

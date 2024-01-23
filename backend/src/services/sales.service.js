@@ -53,9 +53,30 @@ const deleteASale = async (saleId) => {
   return { status: 'NO_CONTENT' };
 };
 
+const updateQuantity = async (saleId, productId, quantity) => {
+  const errors = await validationSale.validateUpdate(saleId, productId, quantity);
+  // if (errors) return { status: errors.status, data: { message: errors.message } };
+
+  let indexOfError;
+  if (errors.some((error, index) => {
+    indexOfError = index;
+    return error !== undefined; 
+  })) {
+    return {
+      status: errors[indexOfError].status,
+      data: { message: errors[indexOfError].message },
+    };
+  }
+  
+  const result = await salesModel.updateQuantity(saleId, productId, quantity);
+
+  return { status: 'SUCCESSFUL', data: result };
+};
+
 module.exports = {
   findAll,
   findById,
   insertASale,
   deleteASale,
+  updateQuantity,
 };

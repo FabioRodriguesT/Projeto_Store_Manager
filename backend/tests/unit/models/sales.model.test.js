@@ -98,6 +98,33 @@ describe('Realizando teste - SALES MODEL', function () {
     sinon.assert.calledWith(salesModel.deleteASale);
   });
   
+  it('Realizando teste na função que atualiza a quantidade, com sucesso.', async function () {
+    sinon.stub(connection, 'execute')
+      .onFirstCall()
+      .resolves()
+      .onSecondCall()
+      .resolves([[{
+        date: '2024-01-23T15:32:23.000Z',
+        productId: 2,
+        quantity: 15,
+        saleId: 1,
+      }]]);
+    
+    const saleId = 1;
+    const productId = 2;
+    const quantity = 15;
+    
+    const response = await salesModel.updateQuantity(saleId, productId, quantity);
+   
+    expect(response).to.be.a('object');
+    expect(response).to.be.deep.equal({
+      date: '2024-01-23T15:32:23.000Z',
+      productId: 2,
+      quantity: 15,
+      saleId: 1,
+    });
+  });
+
   afterEach(function () {
     sinon.restore();
   });
