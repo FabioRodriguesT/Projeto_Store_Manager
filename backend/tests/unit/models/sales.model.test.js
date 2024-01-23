@@ -85,8 +85,6 @@ describe('Realizando teste - SALES MODEL', function () {
 
     const response = await salesModel.insertASale(sales);
 
-    console.log('RESPONSE', response);
-
     expect(response).to.be.a('number');    
   });
 

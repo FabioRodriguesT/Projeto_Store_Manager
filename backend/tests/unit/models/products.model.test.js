@@ -46,6 +46,21 @@ describe('Realizando teste - PRODUCTS MODEL', function () {
     expect(newProduct).to.equal(productIdFromModel);
   });
 
+  it('Realizando teste de altera um nome de um produto.', async function () {
+    sinon.stub(connection, 'execute').resolves([
+      [{ id: 1, name: 'Martelo do Batman' }],
+    ]);
+
+    const name = 'Martelo do Batman';
+    const id = 1;
+
+    const response = await productsModel.alterAProduct(name, id);
+
+    expect(response).to.be.a('object');
+    expect(response.id).to.equal(1);
+    expect(response.name).to.equal('Martelo do Batman');   
+  });
+
   afterEach(function () {
     sinon.restore();
   });

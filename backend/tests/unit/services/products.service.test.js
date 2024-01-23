@@ -73,6 +73,41 @@ describe('Realizando teste - PRODUCTS SERVICES', function () {
     expect(response.data.message).to.deep.equal('"name" length must be at least 5 characters long');
   });
 
+  it('Atualizando um produto, alterando o seu nome com sucesso.', async function () {
+    sinon.stub(productsModel, 'alterAProduct').resolves({
+      id: 1,
+      name: 'Martelo de Batman',
+    });
+    sinon.stub(productsModel, 'findById').resolves({
+      id: 1,
+      name: 'Martelo de Batman',
+    });
+
+    const name = 'Martelo de Batman';
+    const id = 1;
+   
+    const response = await productsService.alterAProduct(name, id);
+
+    expect(response.status).to.equal('SUCCESSFUL');
+    expect(response.data).to.deep.equal({
+      id: 1,
+      name: 'Martelo de Batman',
+    });
+  });
+
+  it('Atualizando um produto, alterando o seu nome para um nome inválido.', async function () {
+    sinon.stub(productsModel, 'alterAProduct').resolves();
+    sinon.stub(productsModel, 'findById').resolves();
+    
+    const name = 'pera'; // nome inválido porquem tem menos que 5 caracteres,
+    const id = 1;
+
+    const response = await productsService.alterAProduct(name, id);
+    
+    expect(response.status).to.be.equal('INVALID_VALUE');
+    expect(response.data).to.deep.equal({ message: '"name" length must be at least 5 characters long' });
+  });
+
   afterEach(function () {
     sinon.restore();
   });

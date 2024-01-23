@@ -1,22 +1,4 @@
-const { productsModel } = require('../../models');
-
-const isValidProductId = async (productId) => {
-  if (!productId) {
-    return {
-      status: 'BAD_REQUEST',
-      message: '"productId" is required',
-    };
-  }
-
-  const findProduct = await productsModel.findById(productId);
-
-  if (findProduct === undefined) {
-    return {
-      status: 'NOT_FOUND',
-      message: 'Product not found', 
-    };
-  }
-};
+const validationProduct = require('./validationProduct');
 
 const isValidQuantity = (quantity) => {
   if (quantity === undefined) {
@@ -39,7 +21,7 @@ const isValidSale = async (sale) => {
   // [{ "productId": 1, "quantity": 1 }, { "productId": 2, "quantity": 5 }]
   let errorArray = [];
   errorArray = await sale.map(async ({ productId, quantity }) => {
-    const error = await isValidProductId(productId);
+    const error = await validationProduct.isValidProductId(productId);
 
     if (!error) {
       return isValidQuantity(quantity);
@@ -55,6 +37,5 @@ const isValidSale = async (sale) => {
 
 module.exports = {
   isValidSale,
-  isValidProductId,
   isValidQuantity,
 };

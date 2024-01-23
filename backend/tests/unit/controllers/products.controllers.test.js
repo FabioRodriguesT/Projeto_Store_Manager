@@ -97,7 +97,56 @@ describe('Realizando testes - PRODUCTS CONTROLLER', function () {
 
     expect(res.status).to.have.been.calledWith(201);
     expect(res.json).to.have.been.deep.calledWith(newProductFromModel);
-  });  
+  });
+  
+  it('Recuperando o resultado da função de editar um produto com sucesso.', async function () {
+    const mockResult = {
+      status: 'SUCCESSFUL',
+      data: {
+        id: 1,
+        name: 'Martelo do Batman',
+      },
+    };
+    
+    sinon.stub(productsService, 'alterAProduct').resolves(mockResult);
+    
+    const req = {
+      params: {
+        id: 1,
+      },
+      body: {
+        name: 'Martelo do Batman',
+      },      
+    };
+
+    const res = {
+      status: sinon.stub().returnsThis(),
+      json: sinon.stub(),
+    };
+
+    await productsController.editAProduct(req, res);
+    
+    expect(res.status).to.have.been.calledWith(200);
+    expect(res.json).to.have.been.deep.calledWith(mockResult.data);
+  });
+
+  it('Testando o status de error 500 de uma requisição.', async function () {
+    sinon.stub(productsService, 'findAll').resolves({
+      status: 'SUCCESSFUL2',
+      data: {},
+    });
+
+    const req = {};
+
+    const res = {
+      status: sinon.stub().returnsThis(),
+      json: sinon.stub(),
+    };
+
+    await productsController.getAllProducts(req, res);
+  
+    expect(res.status).to.have.been.calledWith(500);
+  });
 
   afterEach(function () {
     sinon.restore();
