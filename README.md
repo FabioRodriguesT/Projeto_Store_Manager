@@ -43,7 +43,7 @@ Para orientar a construção das tabelas através do ORM, utilize o DER a seguir
       </tbody>
      </table>
     </td>
-    <td>O id é gerado automaticamente</td>
+    <td>O `id` é gerado automaticamente</td>
    </tr>
    <tr>
     <td>sales</td>
