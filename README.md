@@ -4,6 +4,10 @@
 
 ## Diagrama de Entidade-Relacionamento:
 
+Para orientar a construção das tabelas através do ORM, utilize o DER a seguir:
+
+ ![Diagrama de Entidade do Blogs-API](./store_manager_database.png)
+
 
 <!-- Olá, Tryber!
 Esse é apenas um arquivo inicial para o README do seu projeto.
