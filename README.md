@@ -4,10 +4,11 @@
 
 ## Sumário
 - [Tecnologias Utilizadas](#Tecnologias-utilizadas)
-- [Diagrama de Entidade-Relacionamento](#Diagrama-de-Entidade-Relacionamento)
-- [O que foi desenvolvido](#O-que-foi-desenvolvido)
+- [Diagrama de Entidade Relacionamento](#Diagrama-de-Entidade-Relacionamento)
+- [Sobre o proejto](#Sobre-o-projeto)
 - [Instalação](#Instalação)
-- [Utilizando a API](#Utilizando-a-API)
+- [Testando a Aplicação](#Testando-a-Aplicação)
+- [Rostas Disponíveis](#Rotas-disponíveis)
 - [Instruções de utilização do projeto](#Instruções-de-utilização-do-projeto)
 - [Dependências](#Dependências)
 - [Licençã](#Licença)
@@ -122,13 +123,15 @@ Para orientar a construção das tabelas através do ORM, utilize o DER a seguir
 
  - Os scripts para criar e popular o banco de dados podem ser vistos no diretório sql;
 
-## O que foi desenvolvido:
+## Sobre o projeto:
+
+### O que foi desenvolvido:
 
 - Foi desenvolvido uma API RESTful utilizando a arquitetura em camadas!
 - A API a ser construída é um sistema de gerenciamento de vendas em que será possível criar, visualizar, deletar e atualizar produtos e vendas. Você deverá utilizar o banco de dados MySQL para a gestão de dados.
 - Também foi desenvolvido testes para garantir as funcionalidade das implementações, uma habilidade essencial para a pessoa desenvolvedora.
 
-## Habilidades a serem trabalhadas:
+### Habilidades desenvolvidas:
 
 - Interagir com um banco de dados relacional MySQL.
 - Implementar uma API utilizando arquitetura em camadas.
@@ -173,7 +176,6 @@ docker-compose up -d db
 ```bash
 npm run dev:local
 ```
-
 
 ## Testando a Aplicação:
 
@@ -274,7 +276,7 @@ npm run test:mutation  # roda os testes e mostra a cobertura de mutações
  </tbody>
 </table>
 
-## Utilização:
+## Instruções de utilização do projeto:
 
 Utilize algum aplicativo ou extensão do VSCode para realizar as requisições.
 
@@ -283,7 +285,7 @@ Exemplo: ThunderClient, Insomnia, entre outros.
 ## Dependências:
 
 Este projeto utilizou os seguintes pacotes:
-Dependências:
+### Dependências:
 
 - @hapi/boom: hapi web framework.
 - express: Web framework for Node.js.
