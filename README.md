@@ -5,7 +5,7 @@
 ## Sumário
 - [Tecnologias Utilizadas](#Tecnologias-utilizadas)
 - [Diagrama de Entidade Relacionamento](#Diagrama-de-Entidade-Relacionamento)
-- [Sobre o proejto](#Sobre-o-projeto)
+- [Sobre o proejeto](#Sobre-o-projeto)
 - [Instalação](#Instalação)
 - [Testando a Aplicação](#Testando-a-Aplicação)
 - [Rostas Disponíveis](#Rotas-disponíveis)
