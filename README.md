@@ -195,7 +195,7 @@ npm run test:coverage  # roda os testes e mostra a cobertura geral
 npm run test:mutation  # roda os testes e mostra a cobertura de mutações
 ```
 
-## Rotas disponíveis
+## Rotas disponíveis:
 
 <table>
  <thead>
@@ -270,7 +270,7 @@ Utilize algum aplicativo ou extensão do VSCode para realizar as requisições.
 
 Exemplo: ThunderClient, Insomnia, entre outros.
 
-Dependências:
+## Dependências:
 
 Este projeto utilizou os seguintes pacotes:
 Dependências:
