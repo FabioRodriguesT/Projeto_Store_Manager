@@ -4,7 +4,9 @@
 
 ## Técnologias usadas
 
-Node.js, Express, MySQL
+- Node.js
+- Express
+- MySQL
 
 ## Diagrama de Entidade-Relacionamento:
 
