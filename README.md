@@ -11,7 +11,7 @@
 - [Rostas Disponíveis](#Rotas-disponíveis)
 - [Instruções de utilização do projeto](#Instruções-de-utilização-do-projeto)
 - [Dependências](#Dependências)
-- [Licençã](#Licença)
+- [Licença](#Licença)
 
 ## Tecnologias utilizadas:
 
