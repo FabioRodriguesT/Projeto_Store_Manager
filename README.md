@@ -258,7 +258,37 @@ npm run test:mutation  # roda os testes e mostra a cobertura de mutações
  </tbody>
 </table>
 
+## Utilização:
 
+Utilize algum aplicativo ou extensão do VSCode para realizar as requisições.
+
+Exemplo: ThunderClient, Insomnia, entre outros.
+
+Dependências:
+
+Este projeto utilizou os seguintes pacotes:
+Dependências:
+
+    express: Web framework for Node.js.
+    express-async-errors: Middleware to handle async errors.
+    joi: Data validation library.
+    jsonwebtoken: For handling JWT authentication.
+    mysql2: MySQL client for Node.js.
+    sequelize: ORM for managing SQL databases.
+
+Dependências de desenvolvimento:
+chai: Assertion library.
+chai-http: HTTP integration testing for Chai.
+change-case: Utilities for changing case of strings.
+eslint-config-trybe-backend: ESLint configuration.
+frisby: API testing framework.
+jest: JavaScript testing framework.
+mocha: Test framework.
+nodemon: Auto-restart for Node.js applications.
+nyc: Code coverage tool.
+sequelize-cli: CLI for Sequelize.
+sinon: Standalone test spies, stubs, and mocks.
+supertest: Testing HTTP servers.
 
 
 <!-- Olá, Tryber!
