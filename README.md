@@ -157,6 +157,110 @@ docker-compose up -d db
 ```bash
 npm run dev:local
 ```
+
+
+## Testando a Aplicação:
+
+Antes de rodar os testes do avaliador, garanta que a aplicação esteja executando;
+Os testes do avaliador são executados fora do container na raiz do projeto.
+
+- ### Comandos dos testes do avaliador
+```bash
+npm run lint     # roda a verificação do linter
+```
+```bash
+npm test         # roda todos os testes no terminal ou
+```
+```bash
+REQ=01 npm test  # rodando apenas o teste do requisito 01 pelo terminal ou
+```
+```bash
+npm run cy:open  # abre a interface gráfica do Cypress para rodar os testes
+```
+- ### Comandos dos testes com mocha
+
+```bash
+npm run test:mocha     # roda os testes do mocha
+```
+```bash
+npm run test:coverage  # roda os testes e mostra a cobertura geral
+```
+```bash
+npm run test:mutation  # roda os testes e mostra a cobertura de mutações
+```
+
+## Rotas disponíveis
+
+<table>
+ <thead>
+  <tr>
+   <th>Rota</th>
+   <th>Funcionalidade</th>
+   <th>Tipo de Requisição</th>
+  </tr>
+ </thead>
+ <tbody>
+  <tr>
+   <td>/products</td>
+   <td>Lista todos os produtos</td>
+   <td>GET</td>
+  </tr>
+  <tr>
+  <td>/products/:id</td>
+   <td>Lista um produto pelo id específico</td>
+   <td>GET</td>
+  </tr>
+  <tr>
+   <td>/sales</td>
+   <td>Lista todas as vendas</td>
+   <td>GET</td>
+  </tr>
+  <tr>
+   <td>/sales/:id</td>
+   <td>Lista uma venda pelo id específico</td>
+   <td>GET</td>
+  </tr>  
+  <tr>
+   <td>/products</td>
+   <td>Cria um novo produto</td>
+   <td>POST</td>
+  </tr>  
+  <tr>
+   <td>/sales</td>
+   <td>Cria uma nova venda</td>
+   <td>POST</td>
+  </tr>  
+  <tr>
+   <td>/products/:id</td>
+   <td>Edita/Atualiza um produto com id específico</td>
+   <td>PUT</td>
+  </tr>
+  <tr>
+   <td>products/:id</td>
+   <td>Deleta um produto com id específico</td>
+   <td>DELETE</td>
+  </tr>
+  <tr>
+   <td>/sales/:id</td>
+   <td>Deleta uma venda com id específico</td>
+   <td>DELETE</td>
+  </tr>  
+  <tr>
+   <td>/sales/:id/products/id/quantity</td>
+   <td>Atualiza a quantidade de um produto em uma venda</td>
+   <td>PUT</td>
+  </tr>
+  <tr>
+   <td>/products/search?q=productName</td>
+   <td>Pesquisa um produto pelo seu nome</td>
+   <td>GET</td>
+  </tr>  
+ </tbody>
+</table>
+
+
+
+
 <!-- Olá, Tryber!
 Esse é apenas um arquivo inicial para o README do seu projeto.
 É essencial que você preencha esse documento por conta própria, ok?
