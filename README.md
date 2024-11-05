@@ -2,7 +2,17 @@
 
 <strong>Store Manager</strong> é uma API projetada para gerenciamento de vendas. Permitindo que os usuários realizem operações básicas, como ler, deletar e atualizar produtos no seu estoque. Os usuários também pode enviar vendas para o sistema. Essas vendas devem validar se o produto em questão existe. Também é possível ler, deletar e atualizar as vendas.
 
-## Técnologias utilizadas:
+## Sumário
+- [Tecnologias Utilizadas](#Tecnologias-utilizadas)
+- [Diagrama de Entidade-Relacionamento](#Diagrama-de-Entidade-Relacionamento)
+- [O que foi desenvolvido](#O-que-foi-desenvolvido)
+- [Instalação](#Instalação)
+- [Utilizando a API](#Utilizando-a-API)
+- [Instruções de utilização do projeto](#Instruções-de-utilização-do-projeto)
+- [Dependências](#Dependências)
+- [Licençã](#Licença)
+
+## Tecnologias utilizadas:
 
 - Node.js
 - Express
