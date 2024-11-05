@@ -292,7 +292,12 @@ Dependências:
 - nodemon: Auto-restart for Node.js applications.
 - nyc: Code coverage tool.
 - sinon: Standalone test spies, stubs, and mocks.
-- sinon-chai: Custom assertions for using the Sinon
+- sinon-chai: Custom assertions for using the Sinon.
+
+## Licença:
+
+<p>Este projeto é licenciado sob a Licença MIT. Boa codificação!</p>
+
 
 
 
