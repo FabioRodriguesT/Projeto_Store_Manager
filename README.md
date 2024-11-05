@@ -106,7 +106,57 @@ Para orientar a construção das tabelas através do ORM, utilize o DER a seguir
 
  - Os scripts para criar e popular o banco de dados podem ser vistos no diretório sql;
 
+## O que foi desenvolvido:
 
+- Foi desenvolvido uma API RESTful utilizando a arquitetura em camadas!
+- A API a ser construída é um sistema de gerenciamento de vendas em que será possível criar, visualizar, deletar e atualizar produtos e vendas. Você deverá utilizar o banco de dados MySQL para a gestão de dados.
+- Também foi desenvolvido testes para garantir as funcionalidade das implementações, uma habilidade essencial para a pessoa desenvolvedora.
+
+## Habilidades a serem trabalhadas:
+
+- Interagir com um banco de dados relacional MySQL.
+- Implementar uma API utilizando arquitetura em camadas.
+- Criar validações para os dados recebidos pela API.
+- Escrever testes para APIs para garantir a implementação dos endpoints.
+
+## Instalação:
+
+### 🐳 Iniciando a aplicação no Docker Compose
+
+1. Instale as dependências
+```bash
+npm install
+```
+
+2. Inicie os containers do compose `backend` e `db`.
+A aplicação estará disponível em `http://localhost:3001` em modo de desenvolvimento
+```bash
+docker-compose up -d
+```
+
+3. É possível ver os logs da aplicação com `docker logs -n 10 -f <nome-do-container>`
+```bash
+docker logs -n 10 -f store_manager
+```
+
+### 🖥️ Iniciando a aplicação localmente
+
+⚠️ Atenção: Ao rodar localmente, a aplicação deverá receber variáveis de ambiente como exemplificado em env.example para poder se comunicar com o serviço de banco de dados.
+
+1. Instale as dependências
+```bash
+npm install
+```
+
+2. Inicie apenas o serviço `db` no compose
+```bash
+docker-compose up -d db
+```
+
+3. Inicie a aplicação em modo de desenvolvimento
+```bash
+npm run dev:local
+```
 <!-- Olá, Tryber!
 Esse é apenas um arquivo inicial para o README do seu projeto.
 É essencial que você preencha esse documento por conta própria, ok?
