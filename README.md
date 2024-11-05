@@ -275,56 +275,24 @@ Exemplo: ThunderClient, Insomnia, entre outros.
 Este projeto utilizou os seguintes pacotes:
 Dependências:
 
+- @hapi/boom: hapi web framework.
 - express: Web framework for Node.js.
 - express-async-errors: Middleware to handle async errors.
 - joi: Data validation library.
-- jsonwebtoken: For handling JWT authentication.
 - mysql2: MySQL client for Node.js.
-- sequelize: ORM for managing SQL databases.
 
 ### Dependências de desenvolvimento:
 
+- eslint-config-trybe-backend: ESLint configuration.
+- @stryker-mutator/core: Mutation testing.
+- @stryker-mutator/mocha-runner: Mutation testing with mocha.
 - chai: Assertion library.
 - chai-http: HTTP integration testing for Chai.
-- change-case: Utilities for changing case of strings.
-- eslint-config-trybe-backend: ESLint configuration.
-- frisby: API testing framework.
-- jest: JavaScript testing framework.
 - mocha: Test framework.
 - nodemon: Auto-restart for Node.js applications.
 - nyc: Code coverage tool.
-- sequelize-cli: CLI for Sequelize.
 - sinon: Standalone test spies, stubs, and mocks.
-- supertest: Testing HTTP servers.
+- sinon-chai: Custom assertions for using the Sinon
 
 
 
-  "dependencies": {
-    "@hapi/boom": "9.1.0",
-    "express": "4.18.2",
-    "express-async-errors": "3.1.1",
-    "joi": "17.6.0",
-    "mysql2": "3.0.0"
-  },
-  "devDependencies": {
-    "eslint-config-trybe-backend": "2.1.0",
-    "@stryker-mutator/core": "6.4.2",
-    "@stryker-mutator/mocha-runner": "6.4.2",
-    "chai": "4.3.4",
-    "chai-http": "4.3.0",
-    "mocha": "10.2.0",
-    "nodemon": "2.0.22",
-    "nyc": "15.1.0",
-    "sinon": "11.1.1",
-    "sinon-chai": "3.7.0"
-
-
-<!-- Olá, Tryber!
-Esse é apenas um arquivo inicial para o README do seu projeto.
-É essencial que você preencha esse documento por conta própria, ok?
-Não deixe de usar nossas dicas de escrita de README de projetos, e deixe sua criatividade brilhar!
-:warning: IMPORTANTE: você precisa deixar nítido:
-- quais arquivos/pastas foram desenvolvidos por você; 
-- quais arquivos/pastas foram desenvolvidos por outra pessoa estudante;
-- quais arquivos/pastas foram desenvolvidos pela Trybe.
--->
