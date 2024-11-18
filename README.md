@@ -19,7 +19,7 @@
 - Express
 - MySQL
 
-## Diagrama de Entidade-Relacionamento:
+## Diagrama de Entidade Relacionamento:
 
 Para orientar a construção das tabelas através do ORM, utilize o DER a seguir:
 
