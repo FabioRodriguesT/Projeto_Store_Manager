@@ -1,11 +1,12 @@
 ## Descrição:
 
-<strong>Store Manager</strong> é uma API projetada para gerenciamento de vendas. Permitindo que os usuários realizem operações básicas, como ler, deletar e atualizar produtos no seu estoque. Os usuários também pode enviar vendas para o sistema. Essas vendas devem validar se o produto em questão existe. Também é possível ler, deletar e atualizar as vendas.
+<strong>Store Manager</strong> é uma API projetada para gerenciamento de vendas, permitindo que os usuários realizem operações básicas, como ler, deletar e atualizar produtos no estoque. 
+Os usuários também pode enviar vendas no sistema. Essas vendas devem validar se o produto em questão existe. Também é possível ler, deletar e atualizar as vendas.
 
 ## Sumário
 - [Tecnologias Utilizadas](#Tecnologias-utilizadas)
 - [Diagrama de Entidade Relacionamento](#Diagrama-de-Entidade-Relacionamento)
-- [Sobre o proejeto](#Sobre-o-projeto)
+- [Sobre o projeto](#Sobre-o-projeto)
 - [Instalação](#Instalação)
 - [Testando a Aplicação](#Testando-a-Aplicação)
 - [Rostas Disponíveis](#Rotas-disponíveis)
@@ -128,8 +129,8 @@ Para orientar a construção das tabelas através do ORM, utilize o DER a seguir
 ### O que foi desenvolvido:
 
 - Foi desenvolvido uma API RESTful utilizando a arquitetura em camadas!
-- A API a ser construída é um sistema de gerenciamento de vendas em que será possível criar, visualizar, deletar e atualizar produtos e vendas. Você deverá utilizar o banco de dados MySQL para a gestão de dados.
-- Também foi desenvolvido testes para garantir as funcionalidade das implementações, uma habilidade essencial para a pessoa desenvolvedora.
+- A API a ser construída é um sistema de gerenciamento de vendas em que será possível criar, visualizar, deletar e atualizar produtos e vendas. O banco de dados MySQL será utilizado para a gestão de dados.
+- Também foram desenvolvido testes para garantir a funcionalidade das implementações, uma habilidade essencial para a pessoa desenvolvedora.
 
 ### Habilidades desenvolvidas:
 
@@ -142,37 +143,36 @@ Para orientar a construção das tabelas através do ORM, utilize o DER a seguir
 
 ### 🐳 Iniciando a aplicação no Docker Compose
 
-1. Instale as dependências
+1. Instale as dependências:
 ```bash
 npm install
 ```
 
-2. Inicie os containers do compose `backend` e `db`.
-A aplicação estará disponível em `http://localhost:3001` em modo de desenvolvimento
+2. Inicie os containers do compose `backend` e `db`. A aplicação estará disponível em `http://localhost:3001` em modo de desenvolvimento:
 ```bash
 docker-compose up -d
 ```
 
-3. É possível ver os logs da aplicação com `docker logs -n 10 -f <nome-do-container>`
+3. É possível ver os logs da aplicação com `docker logs -n 10 -f <nome-do-container>`:
 ```bash
 docker logs -n 10 -f store_manager
 ```
 
 ### 🖥️ Iniciando a aplicação localmente
 
-⚠️ Atenção: Ao rodar localmente, a aplicação deverá receber variáveis de ambiente como exemplificado em env.example para poder se comunicar com o serviço de banco de dados.
+⚠️ Atenção: Ao rodar localmente, a aplicação deverá receber variáveis de ambiente, como exemplificado em `env.example`, para poder se comunicar com o serviço de banco de dados.
 
-1. Instale as dependências
+1. Instale as dependências:
 ```bash
 npm install
 ```
 
-2. Inicie apenas o serviço `db` no compose
+2. Inicie apenas o serviço `db` no compose:
 ```bash
 docker-compose up -d db
 ```
 
-3. Inicie a aplicação em modo de desenvolvimento
+3. Inicie a aplicação em modo de desenvolvimento:
 ```bash
 npm run dev:local
 ```
@@ -180,7 +180,7 @@ npm run dev:local
 ## Testando a Aplicação:
 
 Antes de rodar os testes do avaliador, garanta que a aplicação esteja executando;
-Os testes do avaliador são executados fora do container na raiz do projeto.
+Os testes do avaliador são executados fora do container, na raiz do projeto.
 
 - ### Comandos dos testes do avaliador
 ```bash
@@ -219,59 +219,59 @@ npm run test:mutation  # roda os testes e mostra a cobertura de mutações
  </thead>
  <tbody>
   <tr>
-   <td>/products</td>
+   <th>/products</th>
    <td>Lista todos os produtos</td>
-   <td>GET</td>
+   <th>GET</th>
   </tr>
   <tr>
-  <td>/products/:id</td>
+  <th>/products/:id</th>
    <td>Lista um produto pelo id específico</td>
-   <td>GET</td>
+   <th>GET</th>
   </tr>
   <tr>
-   <td>/sales</td>
+   <th>/sales</th>
    <td>Lista todas as vendas</td>
-   <td>GET</td>
+   <th>GET</th>
   </tr>
   <tr>
-   <td>/sales/:id</td>
+   <th>/sales/:id</th>
    <td>Lista uma venda pelo id específico</td>
-   <td>GET</td>
+   <th>GET</th>
   </tr>  
   <tr>
-   <td>/products</td>
+   <th>/products</th>
    <td>Cria um novo produto</td>
-   <td>POST</td>
+   <th>POST</th>
   </tr>  
   <tr>
-   <td>/sales</td>
+   <th>/sales</th>
    <td>Cria uma nova venda</td>
-   <td>POST</td>
+   <th>POST</th>
   </tr>  
   <tr>
-   <td>/products/:id</td>
+   <th>/products/:id</th>
    <td>Edita/Atualiza um produto com id específico</td>
-   <td>PUT</td>
+   <th>PUT</th>
   </tr>
   <tr>
-   <td>products/:id</td>
+   <th>products/:id</th>
    <td>Deleta um produto com id específico</td>
-   <td>DELETE</td>
+   <th>DELETE</th>
   </tr>
   <tr>
-   <td>/sales/:id</td>
+   <th>/sales/:id</th>
    <td>Deleta uma venda com id específico</td>
-   <td>DELETE</td>
+   <th>DELETE</th>
   </tr>  
   <tr>
-   <td>/sales/:id/products/id/quantity</td>
+   <th>/sales/:id/products/id/quantity</th>
    <td>Atualiza a quantidade de um produto em uma venda</td>
-   <td>PUT</td>
+   <th>PUT</th>
   </tr>
   <tr>
-   <td>/products/search?q=productName</td>
+   <th>/products/search?q=productName</th>
    <td>Pesquisa um produto pelo seu nome</td>
-   <td>GET</td>
+   <th>GET</th>
   </tr>  
  </tbody>
 </table>
@@ -280,7 +280,7 @@ npm run test:mutation  # roda os testes e mostra a cobertura de mutações
 
 Utilize algum aplicativo ou extensão do VSCode para realizar as requisições.
 
-Exemplo: ThunderClient, Insomnia, entre outros.
+Exemplo: ThunderClient, Insomnia.
 
 ## Dependências:
 
