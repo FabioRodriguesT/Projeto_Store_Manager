@@ -182,7 +182,7 @@ npm run dev:local
 Antes de rodar os testes do avaliador, garanta que a aplicação esteja executando;
 Os testes do avaliador são executados fora do container, na raiz do projeto.
 
-- ### Comandos dos testes do avaliador
+#### Comandos dos testes do avaliador
 ```bash
 npm run lint     # roda a verificação do linter
 ```
@@ -195,7 +195,7 @@ REQ=01 npm test  # rodando apenas o teste do requisito 01 pelo terminal ou
 ```bash
 npm run cy:open  # abre a interface gráfica do Cypress para rodar os testes
 ```
-- ### Comandos dos testes com mocha
+#### Comandos dos testes com mocha
 
 ```bash
 npm run test:mocha     # roda os testes do mocha
